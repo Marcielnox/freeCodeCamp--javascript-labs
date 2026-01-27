@@ -1,0 +1,62 @@
+** start of script.js **
+
+let questions = [
+  {
+    category: "world",
+    question: "What is the capital of Thailand?",
+    choices: ["Bangkok", "Bangladesh", "Kaput"],
+    answer: "Bangkok",
+  },
+  {
+    category: "Random Trivia",
+    question: "Why did Che Guevara doubt if Fidel Castro was a communist?",
+    choices: ["He liked TV too much", "He was greedy", "He was too good at basketball"],
+    answer: "He was too good at basketball",
+  },
+  {
+    category: "Numbers",
+    question: "What number am i thinking about?",
+    choices: ["1", "2", "1912"],
+    answer: "1912",
+  },
+  {
+    category: "Phones",
+    question: "What is the best phone?",
+    choices: ["Andriod", "Apple", "Other"],
+    answer: "Other",
+  },
+  {
+    category: "Dungeons and Dragons",
+    question: "Why do people play Dungeons and Dragons?",
+    choices: ["The Dragons", "The Dungeons", "Escapism"],
+    answer: "Escapism",
+  }
+];
+
+function getRandomQuestion(questionsArray) {
+  const randomIndex = Math.floor(Math.random() * questionsArray.length);
+  return questionsArray[randomIndex];
+}
+
+function getRandomComputerChoice(choicesArray) {
+  const randomIndex = Math.floor(Math.random() * choicesArray.length);
+  return choicesArray[randomIndex];
+}
+
+function getResults(questionObject, computerChoice) {
+  if (computerChoice === questionObject.answer) {
+    return "The computer's choice is correct!";
+  } else {
+    return `The computer's choice is wrong. The correct answer is: ${questionObject.answer}`;
+  }
+}
+
+const randomQ = getRandomQuestion(questions);
+const compChoice = getRandomComputerChoice(randomQ.choices);
+
+console.log(`Category: ${randomQ.category}`);
+console.log(`Question: ${randomQ.question}`);
+console.log(`Computer picked: ${compChoice}`);
+
+** end of script.js **
+
