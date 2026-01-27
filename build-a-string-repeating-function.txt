@@ -1,0 +1,15 @@
+** start of script.js **
+
+function repeatStringNumTimes(str, num) {
+  let finalString = "";
+  if (num <= 0) {
+    return "";
+  }
+  for (let i = 0; i < num; i++) {
+    finalString += str;
+  }
+  return finalString;
+}
+
+** end of script.js **
+
