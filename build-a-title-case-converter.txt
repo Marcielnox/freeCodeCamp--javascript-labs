@@ -1,0 +1,18 @@
+** start of script.js **
+
+function titleCase(str) {
+  const words = str.split(" ");
+  const titleCasedWords = [];
+
+  for (let word of words) {
+    const lowerWord = word.toLowerCase();
+    const capitalizedWord = lowerWord.charAt(0).toUpperCase() + lowerWord.slice(1);
+    
+    titleCasedWords.push(capitalizedWord);
+  }
+  return titleCasedWords.join(" ");
+}
+console.log(titleCase("HERE IS MY HANDLE HERE IS MY SPOUT"));
+
+** end of script.js **
+
