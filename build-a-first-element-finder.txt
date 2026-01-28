@@ -1,0 +1,15 @@
+** start of script.js **
+
+function findElement(arr, func) {
+  for (let i = 0; i < arr.length; i++) {
+    let num = arr[i];
+    if (func(num)) {
+      return num;
+    }
+  }
+  return undefined;
+}
+
+
+** end of script.js **
+
