@@ -1,0 +1,21 @@
+** start of script.js **
+
+function pairElement(str) {
+  let results = [];
+  for (let char of str) {
+    if (char === "A") {
+      results.push(["A", "T"]);
+    } else if (char === "T") {
+      results.push(["T", "A"]);
+    } else if (char === "C") {
+      results.push(["C", "G"]);
+    } else if (char === "G") {
+      results.push(["G", "C"]);
+    }
+  }
+  return results;
+}
+pairElement("ATCGA")
+
+** end of script.js **
+
