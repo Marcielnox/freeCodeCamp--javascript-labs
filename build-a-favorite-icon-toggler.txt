@@ -1,0 +1,59 @@
+** start of index.html **
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Favorite Icon Toggler</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <ul class="item-list">
+    <li>
+    Adventure Story
+    <button class="favorite-icon">&#9825;</button>
+  </li>
+  <li>
+    Funny Story
+    <button class="favorite-icon">&#9825;</button>
+  </li>
+  <li>
+    Scary Story
+    <button class="favorite-icon">&#9825;</button>
+  </li>
+</ul>
+  <body>
+  
+  </body>
+  <script src="script.js"></script>
+</html>
+
+** end of index.html **
+
+** start of styles.css **
+
+.filled {
+  color: #ee4b2b;
+  transform: scale(1.2);
+  transition: transform 0.2s ease;
+}
+
+** end of styles.css **
+
+** start of script.js **
+
+const favoriteBtns = document.querySelectorAll(".favorite-icon");
+
+favoriteBtns.forEach((btn) => {
+  btn.addEventListener("click", () => {
+    if (btn.classList.contains("filled")) {
+      btn.classList.remove("filled");
+      btn.innerHTML = "&#9825;"; 
+    } else {
+      btn.classList.add("filled");
+      btn.innerHTML = "&#10084;"; 
+    }
+  });
+});
+
+** end of script.js **
+
