@@ -1,0 +1,70 @@
+** start of index.html **
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lightbox Viewer</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+
+  <body>
+    <div class="gallery">
+      <img class="gallery-item" src="https://cdn.freecodecamp.org/curriculum/labs/stonehenge-thumbnail.jpg" alt="stone henge" />
+      <img class="gallery-item" src="https://cdn.freecodecamp.org/curriculum/labs/storm-thumbnail.jpg" alt="Horses heading towards house" />
+      <img class="gallery-item" src="https://cdn.freecodecamp.org/curriculum/labs/trees-thumbnail.jpg" alt="Barn with sheep" />
+      </div>
+      <div class="lightbox">
+        <button id="close-btn"></button>
+        <img id="lightbox-image" />
+      </div>
+  </body>
+<script src="script.js"></script>
+</html>
+
+** end of index.html **
+
+** start of styles.css **
+
+.lightbox {
+  position: fixed;
+ top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: none;
+}
+
+** end of styles.css **
+
+** start of script.js **
+
+const galleryItems = document.querySelectorAll(".gallery-item");
+const lightbox = document.querySelector(".lightbox");
+const lightboxImage = document.querySelector("#lightbox-image");
+const closeBtn = document.querySelector("#close-btn");
+
+galleryItems.forEach(item => {
+  item.addEventListener("click", () => {
+    lightbox.style.display = "flex";
+    const thumbnailSrc = item.getAttribute("src");
+    const fullSizeSrc = thumbnailSrc.replace("-thumbnail", "");
+    
+    lightboxImage.src = fullSizeSrc;
+  });
+});
+closeBtn.addEventListener("click", () => {
+  lightbox.style.display = "none";
+});
+
+lightbox.addEventListener("click", (e) => {
+  if (e.target === lightbox) {
+    lightbox.style.display = "none";
+  }
+});
+
+** end of script.js **
+
