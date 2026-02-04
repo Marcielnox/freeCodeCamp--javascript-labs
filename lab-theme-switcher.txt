@@ -1,0 +1,89 @@
+** start of index.html **
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Theme Switcher</title>
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <button id="theme-switcher-button" aria-haspopup="true" aria-controls="theme-dropdown" aria-expanded="false">Switch Theme</button>
+  <ul id="theme-dropdown" role="menu" aria-labelledby="theme-switcher-button" hidden>
+    <li role="menuitem" id="theme-blue">blue</li>
+    <li role="menuitem" id="theme-red">red</li>
+  </ul>
+<div id="aria-message" aria-live="polite"></div>
+
+  <script src="./script.js"></script>
+</body>
+</html>
+
+** end of index.html **
+
+** start of styles.css **
+
+body {
+  margin: 0;
+  font-family: sans-serif;
+  transition: background 0.3s, color 0.3s;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  list-style-type: none;
+}
+
+#status {
+  text-align: center;
+  min-height: 20px;
+}
+
+** end of styles.css **
+
+** start of script.js **
+
+const themesSwitcher = document.getElementById('theme-switcher-button');
+const themeDropDown = document.getElementById('theme-dropdown');
+const themeBlue = document.getElementById('theme-blue');
+const themeRed = document.getElementById('theme-red');
+
+const themes = [
+  {name: "blue", message: "Blue Theme"},
+  {name: "red", message: "Red Theme"}
+];
+
+themesSwitcher.addEventListener("click", () => {
+  themeDropDown.toggleAttribute("hidden");
+  const isClosed = themeDropDown.hasAttribute("hidden");
+  themesSwitcher.setAttribute("aria-expanded", isClosed ? "false" : "true");
+});
+themeBlue.addEventListener("click", () => {
+  document.body.classList.remove("theme-red");
+  document.body.classList.add("theme-blue");
+});
+themeRed.addEventListener("click", () => {
+  document.body.classList.remove("theme-blue");
+  document.body.classList.add("theme-red");
+});
+const themeMsg = document.getElementById('aria-message');
+themeBlue.addEventListener("click", () => {
+  const blueTheme = themes.find(t => t.name === "blue");
+  
+  document.body.className = `theme-${blueTheme.name}`;
+  themeMsg.textContent = blueTheme.message;
+});
+themeRed.addEventListener("click", () => {
+  const redTheme = themes.find(t => t.name === "red");
+  
+  document.body.className = `theme-${redTheme.name}`;
+  themeMsg.textContent = redTheme.message;
+});
+
+** end of script.js **
+
