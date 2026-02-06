@@ -1,0 +1,115 @@
+** start of index.html **
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Palindrome Checker</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+<div class="container">
+    <h1>Is it a Palindrome?</h1>
+    <p>Enter text to check for a palindrome:</p>
+    <input id="text-input" type="text">
+    <button id="check-btn">Check</button>
+    <div id="result"></div>
+</div>
+
+</body>
+ <script src="script.js"></script>
+</html>
+
+
+** end of index.html **
+
+** start of styles.css **
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #0a0a23;
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  margin: 0;
+}
+
+h1 {
+  margin-bottom: 20px;
+}
+
+.container {
+  background-color: #ffffff;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  width: 350px;
+  color: #000;
+}
+
+#text-input {
+  width: 80%;
+  padding: 10px;
+  border: 2px solid #5a01a7;
+  border-radius: 5px;
+  margin-bottom: 15px;
+  font-size: 1rem;
+}
+
+#check-btn {
+  padding: 10px 20px;
+  background-color: #5a01a7;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+#check-btn:hover {
+  background-color: #3b016d;
+}
+
+#result {
+  margin-top: 20px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  min-height: 1.5em; /* Prevents layout jumping */
+  word-wrap: break-word;
+}
+
+** end of styles.css **
+
+** start of script.js **
+
+const textInput = document.getElementById("text-input");
+const checkBtn = document.getElementById("check-btn");
+const resultDiv = document.getElementById("result");
+
+checkBtn.addEventListener("click", () => {
+  const originalText = textInput.value;
+  if (originalText === "") {
+    alert("Please input a value");
+    return;
+  }
+  const cleanText = originalText.replace(/[^a-zA-Z0-9]/g, '').toLowerCase();
+  const reversedText = cleanText.split('').reverse().join('');
+
+  if (cleanText === reversedText) {
+    resultDiv.innerText = `${originalText} is a palindrome.`;
+  } else {
+    resultDiv.innerText = `${originalText} is not a palindrome.`;
+  }
+});
+
+
+
+** end of script.js **
+
