@@ -1,0 +1,20 @@
+** start of script.js **
+
+function translatePigLatin(str) {
+  let vowels = ["a", "e", "i", "o", "u"];
+  if (vowels.includes(str[0])) {
+    return str + "way";
+  }
+  let vowelIndex = str.search(/[aeiou]/);
+
+  if (vowelIndex === -1) {
+    return str + "ay";
+  }
+  let start = str.slice(vowelIndex);
+  let end = str.slice(0, vowelIndex);
+  
+  return start + end + "ay";
+}
+
+** end of script.js **
+
