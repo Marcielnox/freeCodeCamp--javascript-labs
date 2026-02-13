@@ -1,0 +1,55 @@
+** start of script.js **
+
+const projectStatus = {
+  PENDING: {
+    description: "Pending Execution"
+  }, 
+  SUCCESS: {
+    description: "Executed Successfully"
+  }, 
+  FAILURE: {
+    description: "Execution Failed"
+  }
+};
+
+class ProjectIdea {
+  constructor(title, description) {
+    this.title = title;
+    this.description = description;
+    this.status = projectStatus.PENDING;
+  }
+
+  updateProjectStatus(newStatus) {
+    this.status = newStatus;
+  }
+}
+
+class ProjectIdeaBoard {
+  constructor(title) {
+    this.title = title;
+    this.ideas = [];
+  }
+
+  pin(idea) {
+    this.ideas.push(idea);
+  }
+
+  unpin(idea) {
+    this.ideas = this.ideas.filter(item => item !== idea);
+  }
+  count(ProjectIdea) {
+    this.ideas.length
+  }
+
+  formatToString() {
+    const header = `${this.title} has ${this.ideas.length} idea(s)\n`;
+    const ideaList = this.ideas.map(idea => 
+      `${idea.title} (${idea.status.description}) - ${idea.description}\n`
+    ).join("");
+
+    return `${header}${ideaList}`;
+  }
+}
+
+** end of script.js **
+
