@@ -1,0 +1,25 @@
+** start of script.js **
+
+function addTogether() {
+  const [first, second] = arguments;
+  if (typeof first !== 'number') {
+    return undefined;
+  }
+  if (arguments.length === 2) {
+    if (typeof second !== 'number') {
+      return undefined;
+    }
+    return first + second;
+  }
+  if (arguments.length === 1) {
+    return function(nextNumber) {
+      if (typeof nextNumber !== 'number') {
+        return undefined;
+      }
+      return first + nextNumber;
+    };
+  }
+}
+
+** end of script.js **
+
